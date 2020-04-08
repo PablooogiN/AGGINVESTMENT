@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="canonical" href="https://html5-templates.com/" />
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="js/script.js"></script>	
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<title>AGGIE TERMINAL</title>
+</head>
+<body>
+	<div id="desktop">
+		<div class="window" data-title="New York Times">
+			<h1>NEWS HEADLINE</h1>
+			<p>this is all the information you need to know to get up to speed on THIS phenomenon! read more about it in my</p>
+			<hr />
+			<h1>NEWS HEADLINE</h1>
+			<p>this is all the information you need to know to get up to speed on THIS phenomenon! read more about it in my</p>
+			<hr />
+			<h1>NEWS HEADLINE</h1>
+			<p>this is all the information you need to know to get up to speed on THIS phenomenon! read more about it in my</p>
+		</div>
+		<div class="window" data-title="Stock Lookup">
+					<form>
+				<div class = "boxes">
+					<div class="selectBox" onclick="showCheckBoxes()">
+						<select>
+							<option>Set Interval: </option>
+						</select>
+					<div class = "overSelect"></div>
+					</div>
+						<div id="checkboxes">
+							<label for="C_one"><input type="checkbox" id = "C1" value="1 min" onclick = "clicked1()"/>1 min</label>
+							<label for="C_two"><input type="checkbox" id="C5" value="5 min" onclick = "clicked5()"/>5 min</label>
+							<label for="C_three"><input type="checkbox" id="C15" value="15 min" onclick = "clicked15()"/>15 min</label>
+							<label for="C_four"><input type="checkbox" id = "C30" value="30 min" onclick = "clicked30()"/>30 min</label>
+							<label for="C_five"><input type="checkbox" id="C60" value="60 min" onclick = "clicked60()"/>60 min</label>
+						</div>
+
+				</div>
+					<label for="fname">Stock name:</label><br>
+					<input type="text" id="stockName" name="stockname">
+					
+			</form>
+
+		</div>
+		<div class="window" data-title="Currency Lookup">
+			<img src="https://s.yimg.com/ny/api/res/1.2/iIGIyUvEiYyDT1i1.wrwjg--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9ODAw/https://media.zenfs.com/en/bloomberg_markets_842/762b3aaf3911f8153f7a5e5a2607182c" style="object-fit: fill; width:400px;"></img>
+		</div>
+		<div class="window" data-title="Welcome">
+			<h1>Welcome to the 1990's</h1>
+			<p>You may look up any stock and related information</p>
+			<p>Drag the title bar to move the windows or resize them from the bottom right corner.</p>
+			<hr />
+			<p><strong>If you are lost, just refresh the page!</strong></p>
+		</div>
+		<img src="img/stst.png" style="position: absolute;left: 0px;bottom: 0px;height:34px;z-index:1;"></img>
+		<img src="img/bst.gif" style="position: absolute;right: 0px;bottom: 0px;height:32px;z-index:1;"></img>
+		<div id="taskbar">
+		
+		<!-- <img src="img/stst.png" style="height:35px;"></img> -->
+		</div>
+		
+		<div id="icons">
+			<a class="openWindow" data-id="1"><img src="https://cdn0.iconfinder.com/data/icons/apple-apps/100/Apple_Stock-512.png" style="width:64px;height:64px;"></img></a>
+			<a class="openWindow" data-id="2"><img src="https://library.kissclipart.com/20181208/ooq/kissclipart-currency-exchange-logo-clipart-exchange-rate-curre-6061433939ac614e.jpg" style="width:64px;height:64px;"></img></a>
+			<a class="openWindow" data-id="3"><img src="https://icons.iconarchive.com/icons/bokehlicia/captiva/256/accessories-text-editor-icon.png" style="width:64px;height:64px;"></img></a>
+			<a class="openWindow" data-id="0"><img src="https://findicons.com/files/icons/2794/metro_ui/512/the_new_york_times_alt.png" style="width:64px;height:64px;"></img></a>
+		</div>
+	</div>
+</body>
+
+</html>
