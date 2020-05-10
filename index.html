@@ -1,77 +1,119 @@
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="canonical" href="https://html5-templates.com/" />
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="js/script.js"></script>	
+	<script src="js/script.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<title>AGGIE TERMINAL</title>
+	<title>AGGINVESTMENT</title>
+	<meta name="description" content="Basic Alpha Vantage script">
+	<meta name="keywords" content="Alpha Vantage,predIQtiv,JavaScript,GitHub">
+	<meta name="date" content="2018-01-14 ~ ">
+	<link rel="shortcut icon" href="img/wsblogotamu.ico" />
+	<!-- <link rel="shortcut icon" src="img/wsblogotamu.ico" type="image/x-icon" /> -->
 </head>
-<body>
+
+<body onload="initialPageLoad()">
 	<div id="desktop">
-		<div class="window" data-title="New York Times">
-			<h1>NEWS HEADLINE</h1>
-			<p>this is all the information you need to know to get up to speed on THIS phenomenon! read more about it in my</p>
-			<hr />
-			<h1>NEWS HEADLINE</h1>
-			<p>this is all the information you need to know to get up to speed on THIS phenomenon! read more about it in my</p>
-			<hr />
-			<h1>NEWS HEADLINE</h1>
-			<p>this is all the information you need to know to get up to speed on THIS phenomenon! read more about it in my</p>
+		<div class="window closed" data-title="New York Times">
+			<div id="articles"></div>
 		</div>
-		<div class="window" data-title="Stock Lookup">
-					<form>
-				<div class = "boxes">
-					<div class="selectBox" onclick="showCheckBoxes()">
-						<select>
-							<option>Set Interval: </option>
-						</select>
-					<div class = "overSelect"></div>
-					</div>
-						<div id="checkboxes">
-							<label for="C_one"><input type="checkbox" id = "C1" value="1 min" onclick = "clicked1()"/>1 min</label>
-							<label for="C_two"><input type="checkbox" id="C5" value="5 min" onclick = "clicked5()"/>5 min</label>
-							<label for="C_three"><input type="checkbox" id="C15" value="15 min" onclick = "clicked15()"/>15 min</label>
-							<label for="C_four"><input type="checkbox" id = "C30" value="30 min" onclick = "clicked30()"/>30 min</label>
-							<label for="C_five"><input type="checkbox" id="C60" value="60 min" onclick = "clicked60()"/>60 min</label>
-						</div>
 
+		<div class="window closed" data-title="Stock Lookup" id="stockwindow">
+			<div class="lookupform"><form>
+				<label for="fname">Stock name:</label><br>
+				<input type="text" id="stockName" name="stockname" size="10" value="TSLA">
+				<button type="button" onclick="getStock()" >Search</button>
+				
+				
+			</form></div>
+			<div class="radiodates">
+					<INPUT TYPE="radio" id="Daily" NAME="q1" VALUE=0>Daily
+					<INPUT TYPE="radio" id="ong "NAME="q1" VALUE=1>Long-term
 				</div>
-					<label for="fname">Stock name:</label><br>
-					<input type="text" id="stockName" name="stockname">
-					
-			</form>
+			
+			<canvas id="chart"></canvas>
 
 		</div>
-		<div class="window" data-title="Currency Lookup">
-			<img src="https://s.yimg.com/ny/api/res/1.2/iIGIyUvEiYyDT1i1.wrwjg--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9ODAw/https://media.zenfs.com/en/bloomberg_markets_842/762b3aaf3911f8153f7a5e5a2607182c" style="object-fit: fill; width:400px;"></img>
+
+		<div class="window closed" data-title="Currency Lookup">
+			<div class="lookupform2">
+				<form>
+					<label for="fname">Currency name:</label><br>
+					<input type="text" id="currName" name="currname" size="10" value="CAD">
+					<input type="text" id="currName2" name="currname2" size="10" value="USD">
+					<button type="button" onclick="getCurrency()">Search</button>
+				</form>
+			</div>
+			<canvas id="chart2"></canvas>
 		</div>
-		<div class="window" data-title="Welcome">
-			<h1>Welcome to the 1990's</h1>
-			<p>You may look up any stock and related information</p>
+
+	<div class="window" data-title="Welcome" >
+			<div id="welcomeHome">
+			<h1 style="text-align:center ; text-decoration: underline;" >Welcome to AGGINVESTMENT</h1>
+			<img src="img/ws.JPG" style="width:180px;height:180px;" class= "wallstreets">
+			<p  style="text-align:center" >This is a website created by: <br>Pablo Ginebra<br>Andrew Geyer<br>Rebeca Reyes<br>Isaak Ruiz</p>
+			<p>You may look up any stock, currency exchanges, and related information through news articles provided by The New York Times. Begin by clicking on the stock icon and search a stock ticker to retrieve its graph. You may view daily or long-term stock charts. Click on the newspaper icon to select from a series of articles to read about. Click on the currency exchange icon to retrieve its graph and compare currencies to each other. The list icons keep track of your visited stocks, currencies, and investments by adding and removing.	
+			</p>
 			<p>Drag the title bar to move the windows or resize them from the bottom right corner.</p>
 			<hr />
 			<p><strong>If you are lost, just refresh the page!</strong></p>
+			</div>
 		</div>
+
+
+
+		<div class="window closed" data-title="Stock List">
+		<h1>Stock List</h1>
+			<input type="text" id="myInput" size="12" placeholder="Stock Ticker">
+			<button type="button" class="addBtn" onclick="newElement()">Add</button>
+			<!-- <span onclick="newElement()" class="addBtn">Add</span> -->
+
+			<ul id='myUL'>
+		        
+			</ul>
+		</div>
+
+		<div class="window closed" data-title="Currency List">
+		<h1>Currency List</h1>
+			<input type="text" id="myInput2" size="10" placeholder="Currency One">
+			<input type="text" id="myInput3" size="10" placeholder="Currency Two">
+			<!-- <span onclick="newElementCurr()" class="addBtn">Add</span> -->
+			<button type="button" class="addBtn" onclick="newElementCurr()">Add</button>
+
+			<ul id='myUL2'>
+		        
+			</ul>
+		</div>
+
 		<img src="img/stst.png" style="position: absolute;left: 0px;bottom: 0px;height:34px;z-index:1;"></img>
-		<img src="img/bst.gif" style="position: absolute;right: 0px;bottom: 0px;height:32px;z-index:1;"></img>
+		<img src="img/clock.png" style="position: absolute;right: 0px;bottom: 0px;height:32px;z-index:1;"></img>
+		
 		<div id="taskbar">
-		
-		<!-- <img src="img/stst.png" style="height:35px;"></img> -->
 		</div>
-		
-		<div id="icons">
-			<a class="openWindow" data-id="1"><img src="https://cdn0.iconfinder.com/data/icons/apple-apps/100/Apple_Stock-512.png" style="width:64px;height:64px;"></img></a>
-			<a class="openWindow" data-id="2"><img src="https://library.kissclipart.com/20181208/ooq/kissclipart-currency-exchange-logo-clipart-exchange-rate-curre-6061433939ac614e.jpg" style="width:64px;height:64px;"></img></a>
-			<a class="openWindow" data-id="3"><img src="https://icons.iconarchive.com/icons/bokehlicia/captiva/256/accessories-text-editor-icon.png" style="width:64px;height:64px;"></img></a>
-			<a class="openWindow" data-id="0"><img src="https://findicons.com/files/icons/2794/metro_ui/512/the_new_york_times_alt.png" style="width:64px;height:64px;"></img></a>
+
+			<div id="icons">
+				<a class="openWindow" data-id="0"><img src="img/newsblk.png" style="width:64px;height:64px;"></img></a>
+				<a class="openWindow" data-id="1"><img src="img/stock.png" style="width:64px;height:64px;"></img></a>
+				<a class="openWindow" data-id="2"><img src="img/currex.png" style="width:64px;height:64px;"></img></a>
+				<a class="openWindow" data-id="3"><img src="img/wel.png" style="width:64px;height:64px;"></img></a>
+				<a class="openWindow" data-id="4"><img src="img/notepad.png" style="width:64px;height:64px;"></img></a>
+				<a class="openWindow" data-id="5"><img src="img/currnote.png" style="width:64px;height:64px;"></img></a>
+				
+			</div>
 		</div>
-	</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+		<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </body>
 
 </html>

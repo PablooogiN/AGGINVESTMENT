@@ -15,15 +15,31 @@ table{border-collapse:collapse;border-spacing:0}
 hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
 input,select{vertical-align:middle}
 
+.lookupform{
+    position: absolute;
+    padding: 0px;
+}
+
+.radiodates{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.lookupform2{
+    position: absolute;
+    top: 20px;   
+}
+
 #desktop {
-	font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     position: fixed;
     height: 100%;
     width: 100%;
     background: #CCC;
     background-image: url("http://getwallpapers.com/wallpaper/full/5/8/7/240255.jpg");
     background-size:100% 100%;
-	overflow: hidden;
+    overflow: hidden;
     top: 0;
     bottom: 0;
     left: 0;
@@ -33,14 +49,14 @@ input,select{vertical-align:middle}
     position: absolute;
     border: 2px solid #000;
     background: #EEE;
-	border-radius: 5px;
-	z-index: 1000;
+    border-radius: 5px;
+    z-index: 1000;
 }
 .window.closed {
-	display: none;
+    display: none;
 }
 .window.minimizedWindow {
-	display: none;
+    display: none;
 }
 .window.fullSizeWindow {
     top: 0 !important;
@@ -50,27 +66,29 @@ input,select{vertical-align:middle}
     bottom: 32px !important;
 }
 .fullSizeWindow .ui-resizable-handle {
-	display: none;
+    display: none;
 }
 .windowHeader {
-    background-color: #b7b7e0;
+    background-color: #3366cc;
     text-align: right;
     border-bottom: 2px solid #000;
     padding: 2px;
     cursor: move;
     height: 28px;
+    color: #ffffff;
 }
 .activeWindow .windowHeader {
-    background-color: #8888d6;
+    background-color: #005bf0;
 }
 .windowHeader > span {
     display: inline-block;
     cursor: pointer;
-    border: 2px solid #000;
+    border: 2px solid #ffffff;
     margin-left: 4px;
     font-size: 19px;
     padding: 2px 10px;
     font-family: "Arial Black", Gadget, sans-serif;
+    color: white;
     border-radius: 5px;
     line-height: 20px;
     width: 12px;
@@ -79,10 +97,10 @@ input,select{vertical-align:middle}
     overflow: hidden;
 }
 .windowHeader > span:hover {
-	background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.3);
 }
-.windowHeader > span.winclose:hover {
-	background: #f15454;
+.windowHeader > span.winclose {
+    background: #f15454;
 }
 .windowHeader > span > span {
     display: inline-block;
@@ -93,17 +111,17 @@ input,select{vertical-align:middle}
     left: 10px;
 }
 .winminimize > span {
-	border-bottom: 3px solid #000;
+    border-bottom: 3px solid #ffffff;
 }
 .winmaximize > span {
-	border: 2px solid #000;
-	border-top: 3px solid #000;
+    border: 2px solid #ffffff;
+    border-top: 3px solid #ffffff;
 }
 .winmaximize > span:nth-child(2) {
-	display: none;
+    display: none;
 }
 .fullSizeWindow .winmaximize > span:nth-child(1) {
-	margin: 2px 0 0 -4px;
+    margin: 2px 0 0 -4px;
 }
 .fullSizeWindow .winmaximize > span:nth-child(2) {
     display: inline-block;
@@ -116,7 +134,7 @@ input,select{vertical-align:middle}
     min-height: 140px;
     border: 2px solid #000;
     margin: 2px;
-	border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
 }
 .windowHeader > strong {
     float: left;
@@ -134,45 +152,45 @@ input,select{vertical-align:middle}
     padding: 0 10px;
     background: #3366ff;
     font-weight: bold;
-	cursor: pointer;
+    cursor: pointer;
     color: white;
 }
 .taskbarPanel.activeTab {
-	background: #6666ff;
+    background: #6666ff;
 }
 .taskbarPanel.minimizedTab {
-	background: #AAA;	
+    background: #AAA;   
 }
 .taskbarPanel.minimizedTab:hover {
-	background: #DDD;
+    background: #DDD;
 }
 .taskbarPanel.closed {
-	display: none;
+    display: none;
 }
 #taskbar {
-	position: absolute;
-	height: 32px;
-	border-top: 2px solid #000;
-	bottom: 0;
-	left: 90px;
-	right: 0;
-	background: #3366cc;
+    position: absolute;
+    height: 32px;
+    border-top: 2px solid #000;
+    bottom: 0;
+    left: 90px;
+    right: 0;
+    background: #3366cc;
 }
 #icons {
-	position: absolute;
-	z-index: 10;
-	top: 20px;
-	left: 20px;
+    position: absolute;
+    z-index: 10;
+    top: 20px;
+    left: 20px;
 }
 #icons a {
     display: block;
     cursor: pointer;
     padding: 2px 10px;
 }
-#icons a:hover {
-	background: #000;
-	color: #FFF;
-}
+/*#icons a:hover {
+    background: #000;
+    color: #FFF;
+}*/
 #templateLink {
     position: absolute;
     display: inline-block;
@@ -184,60 +202,77 @@ input,select{vertical-align:middle}
 }
 
 /*Demo styles BEGIN*/
-#window0 {	top: 20px;	left: 240px;}
-#window1 {	top: 400px; left: 120px;}
-#window2 {	top: 250px; left: 300px;}
-#window3 {	top: 125px; left: 420px;}
-#window0 .wincontent {	width: 660px; height: 400px;	}
-#window1 .wincontent {	width: 500px; height: 300px;	}
-#window2 .wincontent {	width: 400px; height: 350px;	}
-#window3 .wincontent {	width: 400px; height: 350px;	}
+#window0 {  top: 20px;  left: 240px;}
+#window1 {  top: 400px; left: 120px;}
+#window2 {  top: 250px; left: 300px;}
+#window3 {  top: 125px; left: 420px;}
+#window4 {  top: 300px; left: 310px;}
+#window5 {  top: 500px; left: 440px;}
+#window0 .wincontent {  width: 550px; height: 575px;    }
+#window1 .wincontent {  width: 650px; height: 350px;    }
+#window2 .wincontent {  width: 650px; height: 350px;    }
+#window3 .wincontent {  width: 550px; height: 575px;    }
+#window4 .wincontent {  width: 220px; height: 350px;    }
+#window5 .wincontent {  width: 260px; height: 350px;    }
 @media screen and (max-width:960px){
-	#window0 {	left: 10px;	}
-	#window3 {	left: 50px;	}	
+    #window0 {  left: 10px; }
+    #window3 {  left: 50px; }   
 }
 @media screen and (max-width:770px){
-	#window0 .wincontent {	width: 460px;	}
-	#window2 {	left: 100px;	}
-	#window1 {	top: 190px;	left: -5px;	}
+    #window0 .wincontent {  width: 460px;   }
+    #window2 {  left: 100px;    }
+    #window1 {  top: 190px; left: -5px; }
 }
 @media screen and (max-width:540px){
-#window0 .wincontent {	width: 230px; height: 200px;	}
+#window0 .wincontent {  width: 230px; height: 200px;    }
 #window3 .wincontent {
     width: 275px;
     height: auto;
 }
-#window3 {    top: 9px;    left: 10px;	}
-#window2 {    left: -118px;	}
-#window1 .wincontent {    width: auto;    height: 300px;	}
+#window3 {    top: 9px;    left: 10px;  }
+#window2 {    left: -118px; }
+#window1 .wincontent {    width: auto;    height: 300px;    }
+}
+
+#articles {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+#welcomeHome{
+	height: 100%;
+	overflow-y: scroll;
 }
 .boxes {
-	width: 200px;
+    width: 200px;
 }
 
 .selectBox {
-	position: relative;
+    position: relative;
 }
 
 .selectBox select{
-	width: 100%;
-	font-weight: bold;
+    width: 100%;
+    font-weight: bold;
 }
 
 .overSelect {
-	position: absolute;
-	left: 0; right: 0; top:0; bottom: 0;
+    position: absolute;
+    left: 0; right: 0; top:0; bottom: 0;
 }
 
-#checkboxes {
-	display: none;
-	border: 1px #dadada solid;
+.addBtn{
+    cursor: pointer;
 }
 
-#checkboxes label{
-	display: block;
+ul{
+    list-style-type: none;
+    cursor: pointer;
 }
 
-#checkboxes label:hover {
-	background-color: #le90ff
+
+.wallstreets {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
